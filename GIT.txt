@@ -1,0 +1,27 @@
+Certainly! Here are some commonly used Git commands:
+
+1. **`git init`**: Initialize a new Git repository in the current directory.
+
+2. **`git clone <repository URL>`**: Clone a repository into a new directory.
+
+3. **`git add <file>`**: Add changes in a file to the staging area.
+
+4. **`git commit -m "Commit message"`**: Record changes in the repository with a commit message.
+
+5. **`git status`**: Show the status of changes as untracked, modified, or staged.
+
+6. **`git pull`**: Fetch changes from a remote repository and merge them into the current branch.
+
+7. **`git push`**: Push changes to a remote repository.
+
+8. **`git branch`**: List all branches in the repository.
+
+9. **`git checkout <branch>`**: Switch to a different branch.
+
+10. **`git merge <branch>`**: Merge changes from one branch into the current branch.
+
+11. **`git log`**: Display the commit history.
+
+12. **`git remote -v`**: Show the remote repositories and their URLs.
+
+These commands cover basic Git operations. Let me know if you have specific questions or if you'd like more information on any particular Git command!

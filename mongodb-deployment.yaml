@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+  labels:
+    app: mongodb
+spec:
+  replicas: 1
+  selector:
+     matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: myimage:latest
+        ports:
+          - containerPort: 27017
+
+
+          #Breakdown of the YAML:
+            #apiVersion: apps/v1: Specifies the API version for the Deployment object. This is necessary for Kubernetes to recognize the type of resource.
+#kind: Deployment: Declares that this is a Kubernetes Deployment resource.
+#metadata:
+  #name: mongodb-deployment: The name of the deployment resource.
+#labels: Labels help to categorize the deployment, here it's labeled app: mongodb.
+#spec: Specifies the configuration for the deployment.
+#replicas: 1: Only one pod will be created.
+#selector:
+  #matchLabels: This ensures that the deployment will manage pods with the app: mongodb label.
+#template: Defines the pod template for the MongoDB container.
+#metadata:
+  #labels: The pod will be labeled app: mongodb.
+#spec:
+  #containers: Specifies the containers for the pod.
+#name: mongodb: The container's name is mongodb.
+#image: myimage:latest: The image being used for the container (replace with your MongoDB image).
+#ports:
+  #containerPort: 27017: The container exposes port 27017 for MongoDB.
+  #
+  #Steps to Deploy:
+  #Build the Docker Image:
+
+          #Save the Dockerfile.
+          #Build the image:
+          #docker build -t myimage:latest .
+          #Push the Image to a Registry:
+
+          #If you are using Docker Hub, push the image to Docker Hub:
+
+          #docker tag myimage:latest your_dockerhub_username/myimage:latest
+          #docker push your_dockerhub_username/myimage:latest
+          #Apply the Kubernetes Deployment:
+
+          #Save the corrected Kubernetes YAML to a file, e.g., mongodb-deployment.yaml.
+          #Apply the deployment:
+
+          #kubectl apply -f mongodb-deployment.yaml
