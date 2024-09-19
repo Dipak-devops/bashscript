@@ -1,0 +1,128 @@
+---
+- host: all
+ become: true
+ tasks:
+  -name: Install Docker
+   apt:
+     name: docker
+     state: present
+     update_cache: yes
+  -name: Start Docker
+   service:
+     name: docker
+     state: started
+     enabled: yes
+  -name: Pull Nginx Image
+   docker_image:
+     name: nginx
+     source: pull
+  -name: Run Nginx Container
+   docker_container:
+     name: nginx-container
+     image: nginx
+     state: started
+     ports:
+       - "80:80"
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<<EOF
+Here’s an explanation of the provided Ansible playbook in bullet points:
+
+### **Ansible Playbook Breakdown**
+
+- **Header**:
+  - `---`: Indicates the beginning of the YAML document.
+
+- **Hosts**:
+  - `hosts: all`: Specifies that the playbook will run on all hosts defined in the inventory.
+
+- **Privilege Escalation**:
+  - `become: true`: Allows the tasks to be executed with elevated privileges (using sudo).
+
+- **Tasks**: A list of actions to be performed on the hosts.
+
+  - **Task 1: Install Docker**
+    - `- name: Install Docker`: Descriptive name for the task.
+    - `apt`: The Ansible module used to manage packages on Debian-based systems.
+      - `name: docker.io`: Specifies the package to be installed.
+      - `state: present`: Ensures that Docker is installed.
+      - `update_cache: yes`: Updates the package cache before installing.
+
+  - **Task 2: Start Docker**
+    - `- name: Start Docker`: Descriptive name for the task.
+    - `service`: The Ansible module used to manage services.
+      - `name: docker`: Specifies the service to manage.
+      - `state: started`: Ensures that the Docker service is running.
+      - `enabled: yes`: Ensures that Docker starts on boot.
+
+  - **Task 3: Pull Nginx Image**
+    - `- name: Pull Nginx Image`: Descriptive name for the task.
+    - `docker_image`: The Ansible module used to manage Docker images.
+      - `name: nginx`: Specifies the Docker image to be pulled.
+      - `source: pull`: Indicates that the image should be pulled from the Docker registry.
+
+  - **Task 4: Run Nginx Container**
+    - `- name: Run Nginx Container`: Descriptive name for the task.
+    - `docker_container`: The Ansible module used to manage Docker containers.
+      - `name: nginx-container`: Specifies the name of the container to be created.
+      - `image: nginx`: Indicates which image to use for the container.
+      - `state: started`: Ensures that the container is running.
+      - `ports`: Maps the container's port 80 to the host's port 80.
+        - `- "80:80"`: Specifies the port mapping.
+
+### **Summary**
+This playbook installs Docker, starts the Docker service, pulls the Nginx Docker image, and runs an Nginx container, all while executing on all specified hosts with elevated privileges.
+EOF
